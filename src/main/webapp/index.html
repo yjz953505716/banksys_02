@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style type="text/css">
+
+    .content{
+        float: left;
+        overflow: hidden;
+    }
+</style>
+<body>
+<div>
+    卡号:<span></span>
+    <a href="#" onclick="exit()">退出</a><hr>
+</div>
+
+    <div class="content">
+        <a href="balance.html" target="myframe">查询余额</a><br>
+        <a href="" target="myframe">转账</a><br>
+        <a href="" target="myframe">交易记录</a><br>
+        <a href="" target="myframe">修改密码</a><br>
+    </div>
+
+    <div class="content">
+        <iframe name="myframe" width="650px" height="550px"></iframe>
+    </div>
+
+<script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+        $.ajax({
+            url:"UserCode.do",
+            success:function (data) {
+                    $("span").html(data.info);
+            }
+        })
+    });
+
+    function exit() {
+        $.ajax({
+            url:"exit.do",
+            success:function (data) {
+                window.location.href = "login.html";
+            }
+        })
+    }
+</script>
+
+</body>
+</html>

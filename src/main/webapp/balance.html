@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h2>剩余余额</h2><br>
+    人民币: <span></span>￥
+</div>
+
+<script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+        $.ajax({
+            url:"balance.do",
+            success:function (data) {
+                if (data.code == 0){
+                    $("span").html(data.info);
+                } else {
+                    alert(data.info);
+                }
+            }
+        })
+    })
+</script>
+</body>
+</html>
